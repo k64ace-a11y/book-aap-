@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f8fafc;
+  color: #111827;
+}
+
+.hero {
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  color: white;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+.hero-copy p {
+  margin: 1rem auto 0;
+  max-width: 640px;
+  line-height: 1.8;
+  opacity: 0.92;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.notifications {
+  margin-bottom: 1.5rem;
+}
+
+.notification {
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.notification.success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.notification.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.catalog h2,
+.orders h2 {
+  margin-top: 0;
+}
+
+.book-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.book-card {
+  background: white;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.book-card h3 {
+  margin: 0 0 0.5rem;
+}
+
+.author,
+.price {
+  margin: 0.25rem 0 1rem;
+  color: #6b7280;
+}
+
+.book-card label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.book-card input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 0.85rem;
+  border: 1px solid #d1d5db;
+  margin-top: 0.35rem;
+}
+
+.book-card button {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.95rem 1rem;
+  border-radius: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.book-card button:hover {
+  background: #1d4ed8;
+}
+
+.orders {
+  margin-top: 2rem;
+}
+
+.orders ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.orders li {
+  margin-bottom: 0.75rem;
+  padding: 0.95rem 1rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem 1.5rem 2rem;
+  color: #6b7280;
+}

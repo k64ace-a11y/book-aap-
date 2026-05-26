@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find My Book</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-copy">
+      <h1>Find My Book</h1>
+      <p>Shop books online, place your order, and get fast delivery.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <section class="notifications">
+          {% for category, message in messages %}
+            <div class="notification {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </section>
+      {% endif %}
+    {% endwith %}
+
+    <section class="catalog">
+      <h2>Book Catalog</h2>
+      <div class="book-grid">
+        {% for book in books %}
+          <article class="book-card">
+            <h3>{{ book.title }}</h3>
+            <p class="author">by {{ book.author }}</p>
+            <p class="price">${{ '%.2f' | format(book.price) }}</p>
+            <form action="{{ url_for('order_book') }}" method="post">
+              <input type="hidden" name="book_id" value="{{ book.id }}" />
+              <label>
+                Name
+                <input type="text" name="customer_name" placeholder="Your name" required />
+              </label>
+              <label>
+                Email
+                <input type="email" name="customer_email" placeholder="Your email" required />
+              </label>
+              <label>
+                Qty
+                <input type="number" name="quantity" value="1" min="1" />
+              </label>
+              <button type="submit">Order Now</button>
+            </form>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="orders">
+      <h2>Recent Orders</h2>
+      {% if orders %}
+        <ul>
+          {% for order in orders %}
+            <li>
+              <strong>{{ order.customer_name }}</strong> ordered {{ order.quantity }} x <em>{{ order.book_title }}</em> for ${{ '%.2f' | format(order.total) }}.
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No orders yet. Be the first to place one!</p>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer>
+    <p>Find My Book | Your online book ordering app.</p>
+  </footer>
+</body>
+</html>
